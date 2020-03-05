@@ -25,6 +25,13 @@ gulp.task('js', done => {
     done();
 })
 
+gulp.task('img', done => {
+    gulp.src('src/img/**/*')
+        .pipe(gulp.dest('dist/img'))
+        .pipe(connect.reload());
+    done();
+})
+
 gulp.task('sass', done => {
     gulp.src('src/style/*.scss')
         .pipe(sourcemaps.init())
@@ -39,6 +46,7 @@ gulp.task('watch', done => {
     gulp.watch('src/style/*.scss', gulp.series('sass'));
     gulp.watch('src/html/*.html', gulp.series('html'));
     gulp.watch('src/js/*.js', gulp.series('js'));
+    gulp.watch('src/img/*', gulp.series('img'));
     done();
 })
 
